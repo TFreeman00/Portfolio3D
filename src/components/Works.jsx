@@ -16,7 +16,7 @@ const ProjectCard = ({
   tags,
   image,
   source_code_link,
-  onClick
+  onClick,
 }) => {
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
@@ -27,7 +27,7 @@ const ProjectCard = ({
           speed: 450,
         }}
         className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
-        onClick={onClick} 
+        onClick={onClick}
       >
         <div className="relative w-full h-[230px]">
           <img
@@ -52,7 +52,14 @@ const ProjectCard = ({
 
         <div className="mt-5">
           <h3 className="text-white font-bold text-[24px]">{name}</h3>
-          <h3 class="text-white font-bold text-[16px]">{url}</h3>
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white font-bold text-[16px]"
+          >
+            {url}
+          </a>{" "}
           <p className="mt-2 text-secondary text-[14px]">{description}</p>
         </div>
 
@@ -71,10 +78,7 @@ const ProjectCard = ({
   );
 };
 
-const Works = () => {
-   const handleProjectClick = (url) => {
-     window.open(url, "_blank"); 
-   };
+const Works = ({}) => {
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -100,8 +104,7 @@ const Works = () => {
           <ProjectCard
             key={`project-${index}`}
             index={index}
-            {...project}
-            onClick={() => handleProjectClick(project.url)}
+            {...project} 
           />
         ))}
       </div>

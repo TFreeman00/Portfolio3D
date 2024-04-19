@@ -6,9 +6,6 @@ import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 import axios from "axios";
 
-const user = process.env.SMPTU;
-const pass = process.env.SMPTP;
-
 const Contact = () => {
   const formRef = useRef();
   const [form, setForm] = useState({
@@ -44,8 +41,8 @@ const Contact = () => {
         },
         {
           auth: {
-            username: user,
-            password: pass,
+            username: process.env.SMPTU,
+            password: process.env.SMPTP,
           },
         }
       )
